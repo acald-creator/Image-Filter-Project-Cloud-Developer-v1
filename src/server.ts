@@ -14,7 +14,7 @@ import { filterImageFromURL, deleteLocalFiles } from './util/util';
         let { image_url } = req.query as any;
         if (!image_url) {
             // Throws 400 error in case there is no URL provided or Invalid Url
-            return res.status(400).send(`Invalud url or no url provided.`);
+            return res.status(400).send(`Invald url or no url provided.`);
         }
 
         // To download the image, send downloaded image to the client and then delete file from server
@@ -32,4 +32,4 @@ import { filterImageFromURL, deleteLocalFiles } from './util/util';
         console.log(`server running http://localhost:${port}`)
         console.log(`press CTRL+C to stop server`)
     })
-})
+})()
