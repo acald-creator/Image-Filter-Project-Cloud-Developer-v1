@@ -1,42 +1,35 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import { filterImageFromURL, deleteLocalFiles } from './util/util';
 
 (async () => {
-
-    // Init the Express application
+    // Initialize the Express app
     const app = express();
-
-    // Set the network port
+    // Call port 8082
     const port = process.env.PORT || 8082;
-
-    // Use the body parser middleware for post requests
+    // Use body parser middlware for post requests
     app.use(bodyParser.json());
-
     // @TODO
     app.get('/filteredimage', async(req: Request, res: Response) => {
-        let {image_url} = req.query;
-        if(!image_url){
-            return res.status(400).send(`Invalid url or no url`): //throws 400 error in case there is no url or invalid url
+        let { image_url } = req.query as any;
+        if (!image_url) {
+            // Throws 400 error in case there is no URL provided or Invalid Url
+            return res.status(400).send(`Invalud url or no url provided.`);
         }
-        // To download the image, send to the client and delete file from server
+
+        // To download the image, send downloaded image to the client and then delete file from server
         filterImageFromURL(image_url).then(filteredpath => {
-            res.status(200).sendFile(filteredpath, () => {deletedLocalFiles)[filteredpath]};} );
+            res.status(200).sendFile(filteredpath, () => { deleteLocalFiles })
         })
-        
-    });
+    })
+    // End @TODO
 
-    // END @TODO1
+    app.get('/', async(req: Request, res: Response) => {
+        res.send('Try GET /filteredimage?image={{}}')
+    })
 
-    // Root Endpoint
-    // Displays a simple message to the user
-    app.get('/', async (req, res) => {
-        res.send('try GET /filteredimage?image={{}}')
-    });
-
-    // Start the Server
     app.listen(port, () => {
         console.log(`server running http://localhost:${port}`)
         console.log(`press CTRL+C to stop server`)
-    });
-})();
+    })
+})
