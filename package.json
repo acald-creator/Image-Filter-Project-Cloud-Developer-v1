@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pullmana8/image-filter-code-project.git"
+    "url": "git+https://github.com/acald-creator/image-filter-code-project.git"
   },
   "keywords": [
     "api",
@@ -22,9 +22,9 @@
   "author": "Antonette Caldwell",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/pullmana8/image-filter-code-project/issues"
+    "url": "https://github.com/acald-creator/image-filter-code-project/issues"
   },
-  "homepage": "https://github.com/pullmana8/image-filter-code-project#readme",
+  "homepage": "https://github.com/acald-creator/image-filter-code-project#readme",
   "devDependencies": {
     "@types/bluebird": "^3.5.30",
     "@types/express": "^4.17.3",
